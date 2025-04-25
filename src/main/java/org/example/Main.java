@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class Main {
     private static final Logger logger = org.slf4j.LoggerFactory.getLogger(Main.class);
-    private static PresentationTools presentationTools = new PresentationTools();
+    private static final BookTools bookTools = new BookTools();
     public static void main(String[] args) {
         // STDIO Server Transport
         StdioServerTransportProvider stdioServerTransportProvider = new StdioServerTransportProvider(new ObjectMapper());
@@ -52,11 +52,11 @@ public class Main {
             }
             """;
         return new McpServerFeatures.SyncToolSpecification(
-                new McpSchema.Tool("get_presentation", "获取所有的presentation", schema),
+                new McpSchema.Tool("getAllBooks", "获取所有的书", schema),
                 (exchange, arguments) -> {
                     // 工具的实现
-                    List<Presentation> presentations = presentationTools.getPresentations();
-                    List<McpSchema.Content> result = presentations.stream().map(p -> new McpSchema.TextContent(p.toString())).collect(Collectors.toUnmodifiableList());
+                    List<Book> bookList = bookTools.getBookList();
+                    List<McpSchema.Content> result = bookList.stream().map(p -> new McpSchema.TextContent(p.toString())).collect(Collectors.toUnmodifiableList());
                     return new McpSchema.CallToolResult(result, false);
                 }
         );
