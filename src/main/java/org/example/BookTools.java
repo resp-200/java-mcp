@@ -11,10 +11,10 @@ public class BookTools {
 
 
     public BookTools() {
-        var one = new Book("java怎么学", "https://hao123.com", 2025);
-        var two = new Book("程序员怎么养生", "https://hao123.com", 2024);
-        var three = new Book("ai的发展", "https://hao123.com", 2001);
-        var four = new Book("时间简史", "https://hao123.com", 2008);
+        var one = new Book("java怎么学", "https://www.baidu.com", 2025);
+        var two = new Book("程序员怎么养生", "https://www.baidu.com", 2024);
+        var three = new Book("ai的发展", "https://www.baidu.com", 2001);
+        var four = new Book("时间简史", "https://www.baidu.com", 2008);
         this.bookList.addAll(List.of(one, two, three, four));
     }
 
